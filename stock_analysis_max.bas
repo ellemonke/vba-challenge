@@ -1,9 +1,7 @@
-Attribute VB_Name = "Module4"
+Attribute VB_Name = "Module1"
 Sub stock_analysis_max():
 
 'Loop through every Worksheet
-Dim ws As Worksheet
-
 For Each ws In Worksheets
 
     'Column headers
@@ -90,9 +88,9 @@ For Each ws In Worksheets
     ws.Cells(4, 15).Value = "Greatest Total Volume"
             
     'Calculate the values first
-    percent_increase_v = WorksheetFunction.max(ws.Range("K2:K" & results_last_row))
+    percent_increase_v = WorksheetFunction.Max(ws.Range("K2:K" & results_last_row))
     percent_decrease_v = WorksheetFunction.Min(ws.Range("K2:K" & results_last_row))
-    max_volume_v = WorksheetFunction.max(ws.Range("L2:L" & results_last_row))
+    max_volume_v = WorksheetFunction.Max(ws.Range("L2:L" & results_last_row))
         
     'Use values to find row with matching ticker symbol
     percent_increase_r = WorksheetFunction.Match(percent_increase_v, ws.Range("K2:K" & results_last_row), 0)
@@ -116,10 +114,10 @@ For Each ws In Worksheets
     ws.Range("P4").Value = max_volume_t
     ws.Range("Q4").Value = max_volume_v
 
+    ws.Columns("O").AutoFit
         
 Next ws
 
 
 End Sub
-
 
